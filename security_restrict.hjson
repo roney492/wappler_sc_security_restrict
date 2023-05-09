@@ -1,0 +1,33 @@
+[//By Roney
+    {
+        type: 'security_restrict',
+		module : 'security_restrict',
+		action : 'restricts',
+		groupTitle : 'Security Provider',
+		groupIcon : 'fas fa-lg fa-lock comp-security',
+		title : 'Dynamic Restrict',
+		icon : 'fas fa-lg fa-lock comp-security',
+		state : 'opened',
+		properties : [
+			{
+				group: 'Restrict Properties',
+			 	variables: [
+			 		{ name: 'restrictName', optionName: 'name', title: 'ID', type: 'text', defaultValue: '', required: true, baseName: 'security'},
+					{ name: 'restrictProvider', optionName: 'provider', title: 'Provider', type: 'text', required: true,
+                            defaultValue: '', valuesFromModule: 'auth', valuesFromAction: 'provider',
+                            valuesFromFunction: getConnectActionsAbove
+					},
+					{	name: 'restrictDynamicPermissions', optionName: 'dynamicPermissions', title: 'Dynamic Permissions', serverDataBindings: true, type: 'text', help: 'Choose specific permission levels or leave it empty for all logged in users'
+					},
+                    { name: 'loginUrl', optionName: 'loginUrl', type: 'file', routePicker: true, serverDataBindings: true, title: 'Login URL',
+                        defaultValue: '', help: 'If User Not Logged In, Go To'
+                    },
+                    { name: 'forbiddenUrl', optionName: 'forbiddenUrl', type: 'file', routePicker: true, serverDataBindings: true, title: 'Forbidden URL',
+                        defaultValue: '', help: 'If User Is Unauthorized, Go To'
+                    }
+				]
+			}
+        ]
+    }
+
+]
