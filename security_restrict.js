@@ -1,4 +1,7 @@
-// Define the restricts function
+// Define the restricts function by Roney
+
+const { setcookie } = require('../../../lib/modules/core.js');
+
 async function restricts(opts) {
   
   if (this.auth.security.identity === false) {
@@ -23,11 +26,11 @@ async function restricts(opts) {
 
     if (this.auth.security.perms[permission]) {
       let perm = this.auth.security.perms[permission];
-      let table = perm.table || this.users.table;
-      let ident = perm.identity || this.users.identity;
-
+      let table = perm.table || this.auth.security.users.table;
+      let ident = perm.identity || this.auth.security.users.identity;
+      let roleColumn = perm.roleColumn || 'role'; // Assuming the role column is named 'role'
       let results = await this.auth.security.db
-        .select(ident)
+        .select(ident, roleColumn)
         .from(table)
         .where(ident, this.auth.security.identity)
         .where(function () {
@@ -45,7 +48,12 @@ async function restricts(opts) {
             }
           }
         });
-      console.log(results)
+        console.log(results)
+        // setcookie({
+        //   value: results[0].role,
+        //   expires: 30, // Expires in 30 days
+        //   path: '/' // Set the appropriate path for the cookie
+        // }, 'Role');
       if (results.length) return true;
     }
   }

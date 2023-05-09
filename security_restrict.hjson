@@ -1,11 +1,11 @@
-[//By Roney
+[
     {
         type: 'security_restrict',
 		module : 'security_restrict',
 		action : 'restricts',
 		groupTitle : 'Security Provider',
 		groupIcon : 'fas fa-lg fa-lock comp-security',
-		title : 'Dynamic Restrict',
+		title : 'Dynamic Security Restrict',
 		icon : 'fas fa-lg fa-lock comp-security',
 		state : 'opened',
 		properties : [
