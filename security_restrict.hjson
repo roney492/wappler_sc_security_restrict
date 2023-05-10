@@ -5,7 +5,7 @@
     "action": "restricts",
     "groupTitle": "Security Provider",
     "groupIcon": "fas fa-lg fa-lock comp-security",
-    "title": "Dynamic Security Restrict",
+    "title": "Security Restrict v2",
     "icon": "fas fa-lg fa-lock comp-security",
     "state": "opened",
     "properties": [
