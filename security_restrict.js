@@ -82,12 +82,13 @@ async function restricts(opts) {
       }
     }
     let cookieOptions = {
-      domain: undefined,
+      domain: opts.domain || undefined,
       httpOnly: true,
-      maxAge: (30) * 24 * 60 * 60 * 1000, // from days to ms
-      path: '/',
-      secure: true,
-      sameSite: false
+      maxAge: (opts.expires || 30) * 24 * 60 * 60 * 1000, // from days to ms
+      path: opts.path || '/',
+      secure: !!opts.secure,
+      sameSite: opts.sameSite || 'Strict',
+      signed: true
     };
     provider.app.setCookie('Roles', roles.join(','), cookieOptions)
   } else if (opts.condition === 'AND') {
@@ -144,12 +145,13 @@ async function restricts(opts) {
       }
     }
     let cookieOptions = {
-      domain: undefined,
+      domain: opts.domain || undefined,
       httpOnly: true,
-      maxAge: (30) * 24 * 60 * 60 * 1000, // from days to ms
-      path: '/',
-      secure: true,
-      sameSite: false
+      maxAge: (opts.expires || 30) * 24 * 60 * 60 * 1000, // from days to ms
+      path: opts.path || '/',
+      secure: !!opts.secure,
+      sameSite: opts.sameSite || 'Strict',
+      signed: true
     };
     provider.app.setCookie('Roles', roles.join(','), cookieOptions)
   } else {

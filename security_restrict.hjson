@@ -1,39 +1,143 @@
 [
-    {
-        type: 'security_restrict',
-		module : 'security_restrict',
-		action : 'restricts',
-		groupTitle : 'Security Provider',
-		groupIcon : 'fas fa-lg fa-lock comp-security',
-		title : 'Dynamic Security Restrict',
-		icon : 'fas fa-lg fa-lock comp-security',
-		state : 'opened',
-		properties : [
-			{
-				group: 'Restrict Properties',
-			 	variables: [
-			 		{ name: 'restrictName', optionName: 'name', title: 'ID', type: 'text', defaultValue: '', required: true, baseName: 'security'},
-					{ name: 'restrictProvider', optionName: 'provider', title: 'Provider', type: 'text', required: true,
-                            defaultValue: '', valuesFromModule: 'auth', valuesFromAction: 'provider',
-                            valuesFromFunction: getConnectActionsAbove
-					},
-					{ name: 'restrictCondition', optionName: 'condition', title: 'Condition', type: 'droplist',
-					 values: [
-						{title: 'OR', value: 'OR' },
-						{title: 'AND', value: 'AND' }
-					], defaultValue: '',
-					},
-					{	name: 'restrictDynamicPermissions', optionName: 'dynamicPermissions', title: 'Dynamic Permissions', serverDataBindings: true, type: 'text', help: 'Choose specific permission levels or leave it empty for all logged in users'
-					},
-                    { name: 'loginUrl', optionName: 'loginUrl', type: 'file', routePicker: true, serverDataBindings: true, title: 'Login URL',
-                        defaultValue: '', help: 'If User Not Logged In, Go To'
-                    },
-                    { name: 'forbiddenUrl', optionName: 'forbiddenUrl', type: 'file', routePicker: true, serverDataBindings: true, title: 'Forbidden URL',
-                        defaultValue: '', help: 'If User Is Unauthorized, Go To'
-                    }
-				]
-			}
+  {
+    "type": "security_restrict",
+    "module": "security_restrict",
+    "action": "restricts",
+    "groupTitle": "Security Provider",
+    "groupIcon": "fas fa-lg fa-lock comp-security",
+    "title": "Dynamic Security Restrict",
+    "icon": "fas fa-lg fa-lock comp-security",
+    "state": "opened",
+    "properties": [
+      {
+        "group": "Restrict Properties",
+        "variables": [
+          {
+            "name": "restrictName",
+            "optionName": "name",
+            "title": "ID",
+            "type": "text",
+            "defaultValue": "",
+            "required": true,
+            "baseName": "security"
+          },
+          {
+            "name": "restrictProvider",
+            "optionName": "provider",
+            "title": "Provider",
+            "type": "text",
+            "required": true,
+            "defaultValue": "",
+            "valuesFromModule": "auth",
+            "valuesFromAction": "provider",
+            "valuesFromFunction": "getConnectActionsAbove"
+          },
+          {
+            "name": "restrictCondition",
+            "optionName": "condition",
+            "title": "Condition",
+            "type": "droplist",
+            "values": [
+              {
+                "title": "OR",
+                "value": "OR"
+              },
+              {
+                "title": "AND",
+                "value": "AND"
+              }
+            ],
+            "defaultValue": ""
+          },
+          {
+            "name": "restrictDynamicPermissions",
+            "optionName": "dynamicPermissions",
+            "title": "Dynamic Permissions",
+            "serverDataBindings": true,
+            "type": "text",
+            "help": "Choose specific permission levels or leave it empty for all logged in users"
+          },
+          {
+            "name": "loginUrl",
+            "optionName": "loginUrl",
+            "type": "file",
+            "routePicker": true,
+            "serverDataBindings": true,
+            "title": "Login URL",
+            "defaultValue": "",
+            "help": "If User Not Logged In, Go To"
+          },
+          {
+            "name": "forbiddenUrl",
+            "optionName": "forbiddenUrl",
+            "type": "file",
+            "routePicker": true,
+            "serverDataBindings": true,
+            "title": "Forbidden URL",
+            "defaultValue": "",
+            "help": "If User Is Unauthorized, Go To"
+          }
         ]
-    }
-
+      },
+      {
+        "group": "Cookie Options",
+        "variables": [
+          {
+            "name": "cookieDomain",
+            "optionName": "domain",
+            "title": "Domain",
+            "type": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "cookiePath",
+            "optionName": "path",
+            "title": "Path",
+            "type": "text",
+            "defaultValue": "/"
+          },
+          {
+            "name": "cookieExpires",
+            "optionName": "expires",
+            "title": "Expires",
+            "type": "number",
+            "defaultValue": "30",
+            "help": "Number of days when the cookie will expire"
+          },
+          {
+            "name": "cookieSecure",
+            "optionName": "secure",
+            "title": "Secure",
+            "type": "boolean",
+            "defaultValue": false
+          },
+          {
+            "name": "cookieSameSite",
+            "optionName": "sameSite",
+            "title": "Same Site",
+            "type": "droplist",
+            "defaultValue": "",
+            "values": [
+              {
+                "title": "Default",
+                "value": ""
+              },
+              {
+                "title": "None",
+                "value": "None"
+              },
+              {
+                "title": "Lax",
+                "value": "Lax"
+              },
+              {
+                "title": "Strict",
+                "value": "Strict"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ]
