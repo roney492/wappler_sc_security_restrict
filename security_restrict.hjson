@@ -17,6 +17,12 @@
                             defaultValue: '', valuesFromModule: 'auth', valuesFromAction: 'provider',
                             valuesFromFunction: getConnectActionsAbove
 					},
+					{ name: 'restrictCondition', optionName: 'condition', title: 'Condition', type: 'droplist',
+					 values: [
+						{title: 'OR', value: 'OR' },
+						{title: 'AND', value: 'AND' }
+					], defaultValue: '',
+					},
 					{	name: 'restrictDynamicPermissions', optionName: 'dynamicPermissions', title: 'Dynamic Permissions', serverDataBindings: true, type: 'text', help: 'Choose specific permission levels or leave it empty for all logged in users'
 					},
                     { name: 'loginUrl', optionName: 'loginUrl', type: 'file', routePicker: true, serverDataBindings: true, title: 'Login URL',
